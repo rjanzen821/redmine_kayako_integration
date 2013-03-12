@@ -15,7 +15,7 @@ KayakoClient::Base.configure do |config| # Kayako API Configuration uses kayako_
 end
 
 # Redmine setup
-class Issue < ActiveResource::Base # Redmine API configuration and Issue model
+class RedmineIssue < ActiveResource::Base # Redmine API configuration and Issue model
   # redmine info here
   self.site     = # redmine_url
   self.user     = # redmine_user
@@ -34,7 +34,7 @@ KayakoClient::Ticket.all(kayako_department).each do |ticket|
   # extract redmine ids
   redmine_issue_ids = kayako_custom_fields[kayako_issue_field_identifier].scan(/\#(\d+)/).flatten.map(&:to_i)
   # assemble a string of redmine ids and statuses, e.g. "#123|open|  #957|closed|"
-  kayako_custom_fields[kayako_issue_field_identifier] = redmine_issue_ids.map{|id| Issue.exists?(id) ? "##{id}|#{Issue.find(id).status.name}|" : "##{id}|NA|" }.join("  ")
+  kayako_custom_fields[kayako_issue_field_identifier] = redmine_issue_ids.map{|id| RedmineIssue.exists?(id) ? "##{id}|#{RedmineIssue.find(id).status.name}|" : "##{id}|NA|" }.join("  ")
   # post updated kayako custom field string
   kayako_custom_fields.post
 end
