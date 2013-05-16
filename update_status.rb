@@ -11,14 +11,19 @@ class RedmineKayako
   attr_accessor :kayako_department
   attr_accessor :kayako_issue_field_identifier
 
+def credentials
+  #api creds
+  YAML.load File.read 'api_creds.yml'
+end
+
   def setup
     # Kayako setup
     self.kayako_department = 3
     self.kayako_issue_field_identifier = '2azuubvzms0b'
     KayakoClient::Base.configure do |config| # Kayako API Configuration uses kayako_client gem
-      config.api_url    =  #kayako_url
-      config.api_key    = ""# kayako_key
-      config.secret_key = ""# kayako_secret
+      config.api_url    =  credentials['kayako']['url']
+      config.api_key    =  credentials['kayako']['api_key']
+      config.secret_key =  credentials['kayako']['api_secret']
     end
 
     # Redmine setup
