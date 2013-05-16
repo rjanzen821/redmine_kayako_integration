@@ -6,7 +6,7 @@ require "logger"
 
 def credentials
   #api creds
-  YAML.load File.read 'api_creds.yml'
+  YAML.load File.read 'config.yml'
 end
 
 KayakoClient::Base.configure do |config| # Kayako API Configuration uses kayako_client gem

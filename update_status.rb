@@ -19,7 +19,7 @@ end
   def setup
     # Kayako setup
     self.kayako_department = 3
-    self.kayako_issue_field_identifier = '2azuubvzms0b'
+    self.kayako_issue_field_identifier = 'jscexftoczxt'
     KayakoClient::Base.configure do |config| # Kayako API Configuration uses kayako_client gem
       config.api_url    =  credentials['kayako']['url']
       config.api_key    =  credentials['kayako']['api_key']
@@ -29,9 +29,9 @@ end
     # Redmine setup
     #class RedmineIssue < ActiveResource::Base # Redmine API configuration and Issue model
       # redmine info here
-      RedmineIssue.site     = "http://new-server-1718d9.bitnamiapp.com/redmine" # redmine_url
-      RedmineIssue.user     = ""# redmine_user
-      RedmineIssue.password = ""# redmine_password
+      RedmineIssue.site     = credentials['redmine']['url']
+      RedmineIssue.user     = credentials['redmine']['user']
+      RedmineIssue.password = credentials['redmine']['password']
       RedmineIssue.format   = :xml
     #end
 
