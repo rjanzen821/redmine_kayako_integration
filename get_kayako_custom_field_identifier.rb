@@ -4,6 +4,7 @@ require "kayako_client"
 require "active_resource"
 require "logger"
 
+
 def credentials
   #api creds
   YAML.load File.read 'config.yml'
