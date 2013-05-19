@@ -4,6 +4,9 @@ require "kayako_client"
 require "active_resource"
 require "logger"
 
+#KayakoClient::Base.configure do |config| #logger config
+#      config.logger = Logger.new(STDOUT)
+#end
 
 def credentials
   #api creds
@@ -11,12 +14,12 @@ def credentials
 end
 
 KayakoClient::Base.configure do |config| # Kayako API Configuration uses kayako_client gem
-	  config.api_url    =  credentials['kayako']['url']
-      config.api_key    =  credentials['kayako']['api_key']
-      config.secret_key =  credentials['kayako']['api_secret']
+	config.api_url    =  credentials['kayako']['url']
+	config.api_key    =  credentials['kayako']['api_key']
+	config.secret_key =  credentials['kayako']['api_secret']
 end
-#gets custom field name to be manually set to self.kayako_issue_field_identifier
-KayakoClient::Ticket.all(1).each do |ticket|
-	available_fields = KayakoClient::CustomField.all
-	puts available_fields.to_s
-end
+
+#print custom field title and name aka field_identifier for each custom field
+KayakoClient::CustomField.all.each { |custom_field_attributes| 
+	puts custom_field_attributes['title'] 
+	puts custom_field_attributes['field_name'] }

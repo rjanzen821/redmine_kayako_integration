@@ -1,9 +1,12 @@
 require "rubygems"
 require "bundler/setup"
-
 require "kayako_client"
 require "active_resource"
 require "logger"
+
+KayakoClient::Base.configure do |config| #logger config
+      config.logger = Logger.new(STDOUT)
+end
 
 class RedmineIssue < ActiveResource::Base # Redmine API configuration and Issue model
 end
@@ -19,7 +22,7 @@ class RedmineKayako
   def setup
     # Kayako setup
     self.kayako_department = 1
-    self.kayako_issue_field_identifier = 'jscexftoczxt'
+    self.kayako_issue_field_identifier = 'zo7wdtu1ze9a'
     KayakoClient::Base.configure do |config| # Kayako API Configuration uses kayako_client gem
       config.api_url    =  credentials['kayako']['url']
       config.api_key    =  credentials['kayako']['api_key']
@@ -27,18 +30,14 @@ class RedmineKayako
     end
 
     # Redmine setup
-    #class RedmineIssue < ActiveResource::Base # Redmine API configuration and Issue model
+  #class RedmineIssue < ActiveResource::Base # Redmine API configuration and Issue model
       # redmine info here
       RedmineIssue.site     = credentials['redmine']['url']
       RedmineIssue.user     = credentials['redmine']['user']
       RedmineIssue.password = credentials['redmine']['password']
       RedmineIssue.format   = :xml
-    #end
+   # end
 
-    # Logger
-    KayakoClient::Base.configure do |config| #logger config
-      config.logger = Logger.new(STDOUT)
-    end
   end
 
   def update_kayako

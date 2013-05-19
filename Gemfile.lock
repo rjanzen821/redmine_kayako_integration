@@ -34,6 +34,7 @@ PLATFORMS
 
 DEPENDENCIES
   KayakoClient (~> 1.1.0)
+  activemodel
   activeresource (~> 3.2.12)
   factory_girl (~> 4.2.0)
   logger
