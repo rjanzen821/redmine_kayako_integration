@@ -20,6 +20,8 @@ KayakoClient::Base.configure do |config| # Kayako API Configuration uses kayako_
 end
 
 #print custom field title and name aka field_identifier for each custom field
-KayakoClient::CustomField.all.each { |custom_field_attributes| 
-	puts custom_field_attributes['title'] 
-	puts custom_field_attributes['field_name'] }
+KayakoClient::CustomField.all.each do |custom_field_attributes| 
+	puts custom_field_attributes.title
+	puts custom_field_attributes.fieldname
+end
+
