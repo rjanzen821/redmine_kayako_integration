@@ -1,0 +1,7 @@
+#! /usr/bin/env ruby
+require File.expand_path(File.dirname(__FILE__) + '/../redmine_kayako')
+
+#configfile, fieldid, department)
+rk = RedmineKayako.new(ARGV[0], ARGV[1], ARGV[2])
+rk.setup
+rk.update_kayako

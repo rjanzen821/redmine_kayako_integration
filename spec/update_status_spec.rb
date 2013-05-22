@@ -4,7 +4,7 @@ describe RedmineKayako do
 	let(:worker){ RedmineKayako.new}
 	it "has a default department" do
 		worker.setup
-		worker.kayako_department.should == 3
+		worker.kayako_department.should == 1
 	end
 	it "has a default redmine issue identifier" do
 		worker.setup
