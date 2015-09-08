@@ -28,6 +28,7 @@ class RedmineKayako
     RedmineIssue.password = credentials['redmine']['password']
     RedmineIssue.format   = :xml
    
+    # @todo fix this
     #KayakoClient::Base.configure do |config| # Kayako API Configuration uses kayako_client gem
     #  config.api_url    =  credentials['kayako']['url']
     #  config.api_key    =  credentials['kayako']['api_key']
@@ -40,15 +41,6 @@ class RedmineKayako
 
    # end
 
-  end
-
-  # TODO figure out how to do this in initialize
-  def setup
-    KayakoClient::Base.configure do |config| # Kayako API Configuration uses kayako_client gem
-      config.api_url    =  credentials['kayako']['url']
-      config.api_key    =  credentials['kayako']['api_key']
-      config.secret_key =  credentials['kayako']['api_secret']
-    end
   end
 
   def update_kayako

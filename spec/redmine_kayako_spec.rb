@@ -4,14 +4,10 @@ describe RedmineKayako do
 	let(:worker){ RedmineKayako.new}
 	it "has a default department" do
 		worker.setup
-		worker.kayako_department.should == 1
+		worker.kayako_department.should == 3
 	end
 	it "has a default redmine issue identifier" do
 		worker.setup
-	    worker.kayako_issue_field_identifier.should == 'zo7wdtu1ze9a'
-	end
-	it "can get all kayako custom fields" do
-		worker.update_kayako
-	    worker.kayako_custom_fields == 'all custom field contents'
+	    worker.kayako_issue_field_identifier.should == '2azuubvzms0b'
 	end
 end
